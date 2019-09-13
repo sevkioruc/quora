@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load crispy_forms_tags %}
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h3>Giris Yap</h3>
+        <hr>
+        <form method="POST">
+            {% csrf_token %}
+            {{form|crispy}}
+            <br>
+            <button type="submit" class="btn btn-danger">Giris Yap</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
