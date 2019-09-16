@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block body %}
+
+{% if questions %}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Content</th>
+            <th scope="col">Author</th>
+            <th scope="col">Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for question in questions %}
+        <tr>
+            <th scope="row">{{question.id}}</th>
+            <td>{{question.content}}</a></td>
+            <td>{{question.author.username}}</td>
+            <td>{{question.created_date}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% endblock %}
