@@ -26,3 +26,7 @@ def dashboard(request):
         "questions": questions
     }
     return render(request, "dashboard.html", context)
+
+
+def homepage(request):
+    return render(request, "homepage.html")

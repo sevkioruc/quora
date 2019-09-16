@@ -1,7 +1,14 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block body %}
-<div class="jumbotron text-center">
-    <h1>Homepage</h1>
+<h3 style="text-align:center">Categories</h3>
+<div class="container">
+    <a href=""><img src="{% static "forest.jpeg" %}" style="width:300px; height:200px;"></a>&nbsp
+    <a href=""><img src="{% static "sport.jpg" %}" style="width:300px; height:200px;"></a>&nbsp
+    <a href=""><img src="{% static "science.jpg" %}" style="width:300px; height:200px;"></a>&nbsp
+    <br><br>
+    <a href=""><img src="{% static "tech.jpeg" %}" style="width:300px; height:200px;"></a>&nbsp
+    <a href=""><img src="{% static "literature.jpeg" %}" style="width:300px; height:200px;"></a>&nbsp
+    <a href=""><img src="{% static "social.jpg" %}" style="width:300px; height:200px;"></a>&nbsp
 </div>
 {% endblock %}
