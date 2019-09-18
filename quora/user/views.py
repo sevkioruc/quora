@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from .forms import RegisterForm, LoginForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
@@ -45,11 +45,10 @@ def loginUser(request):
             return render(request, "login.html", context)
         messages.success(request, 'Basari ile giris yaptiniz.')
         login(request, user)
-        return render(request, "homepage.html")
+        return redirect('question:dashboard')
     return render(request, 'login.html', context)
 
 
 def logoutUser(request):
     logout(request)
-    messages.success(request, 'Basari ile cikis yaptiniz')
-    return render(request, "homepage.html")
+    return redirect('home')

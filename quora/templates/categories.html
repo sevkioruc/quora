@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+{% block speacialcss %}
+    <link rel="stylesheet" href="{% static 'css/categories.css' %}">
+{% endblock%}
+
+{% block body %}    
+
+<div class="container">
+    <a href="/question/Nature"><img src="{% static "nature.jpeg" %}"></a>&nbsp
+    <a href="/question/Sport"><img src="{% static "sport.jpg" %}"></a>&nbsp
+    <a href="/question/Science"><img src="{% static "science.jpg" %}"></a>&nbsp
+    <br><br>
+    <a href="/question/Technology"><img src="{% static "technology.jpeg" %}"></a>&nbsp
+    <a href="/question/Literature"><img src="{% static "literature.jpeg" %}"></a>&nbsp
+    <a href="/question/Social"><img src="{% static "social.jpg" %}"></a>&nbsp
+</div>
+
+{% endblock %}

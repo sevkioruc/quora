@@ -4,9 +4,9 @@ from blog.forms import QuestionForm
 from django.contrib import messages
 
 
-def questions(request):
+def dashboard(request):
     questions = Question.objects.all().order_by('-created_date')
-    return render(request, "question.html", {"questions": questions})
+    return render(request, "dashboard.html", {"questions": questions})
 
 
 def addQuestion(request):
@@ -20,13 +20,14 @@ def addQuestion(request):
     return render(request, "addQuestion.html", {"form": form})
 
 
-def dashboard(request):
-    questions = Question.objects.all()
-    context = {
-        "questions": questions
-    }
-    return render(request, "dashboard.html", context)
+def categories(request):
+    return render(request, "categories.html")
 
 
 def homepage(request):
     return render(request, "homepage.html")
+
+
+def get(request, category):
+    questions = Question.objects.filter(category=category)
+    return render(request, "singleCategory.html", {"questions": questions})

@@ -1,0 +1,12 @@
+img{
+    margin-left:130px;
+}
+footer {
+    margin-top:30px;
+    padding: 10px 20px;
+    background: #666;
+    color: white;
+}
+footer p {
+    text-align: center;
+}

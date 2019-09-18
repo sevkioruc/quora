@@ -1,14 +1,14 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load static %}
+{% block speacialcss %}
+    <link rel="stylesheet" href="static/css/style.css">
+{% endblock%}
+
 {% block body %}
-<h3 style="text-align:center">Categories</h3>
 <div class="container">
-    <a href=""><img src="{% static "forest.jpeg" %}" style="width:300px; height:200px;"></a>&nbsp
-    <a href=""><img src="{% static "sport.jpg" %}" style="width:300px; height:200px;"></a>&nbsp
-    <a href=""><img src="{% static "science.jpg" %}" style="width:300px; height:200px;"></a>&nbsp
-    <br><br>
-    <a href=""><img src="{% static "tech.jpeg" %}" style="width:300px; height:200px;"></a>&nbsp
-    <a href=""><img src="{% static "literature.jpeg" %}" style="width:300px; height:200px;"></a>&nbsp
-    <a href=""><img src="{% static "social.jpg" %}" style="width:300px; height:200px;"></a>&nbsp
+    <img src="{% static "background.png" %}">
 </div>
-{% endblock %}
+<footer>
+    <p>Company © sevkioruc. All rights reserved.</p>
+</footer>
+{% endblock %}  
