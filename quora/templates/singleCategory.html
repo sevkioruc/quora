@@ -1,6 +1,27 @@
 {% extends "base.html" %}
 {% block body %}
-{% for question in questions %}
-    {{question.content}}
-{% endfor %}
+
+{% if questions %}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Content</th>
+            <th scope="col">Category</th>
+            <th scope="col">Author</th>
+            <th scope="col">Date</th>
+            <th scope="col">View Comments</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for question in questions %}
+        <tr>
+            <td>{{question.content}}</a></td>
+            <td>{{question.category}}</a></td>
+            <td>{{question.author.username}}</td>
+            <td>{{question.created_date}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
 {% endblock %}

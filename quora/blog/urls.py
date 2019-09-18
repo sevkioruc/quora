@@ -9,7 +9,8 @@ app_name = "question"
 urlpatterns = [
     path('', views.dashboard, name="dashboard"),
     path('add/', views.addQuestion, name="addquestion"),
-    path('<str:category>', views.get, name="get")
+    path('<str:category>', views.getSingleCategory, name="get")
 ]
+
 urlpatterns += static(settings.STATIC_URL,
                       document_root=settings.STATIC_ROOT)
