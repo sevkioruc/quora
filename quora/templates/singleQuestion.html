@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block body %}
+
+{{questions.content}}
+
+{% if answers %}
+    {% for answer in answers %}
+    <div class="media mb-4">
+            {{answer.answer_content}}
+    </div>
+    {% endfor %}
+{% endif %}
+
+{% endblock %}
+<!--question/answer/2-->

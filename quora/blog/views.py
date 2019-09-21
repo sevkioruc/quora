@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect, HttpResponse
-from blog.models import Question
+from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
+from blog.models import Question, Answer
 from blog.forms import QuestionForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -35,3 +35,9 @@ def addQuestion(request):
 def getSingleCategory(request, category):
     questions = Question.objects.filter(category=category)
     return render(request, "singleCategory.html", {"questions": questions})
+
+
+def getAnswer(request, id):
+    questions = get_object_or_404(Question, id=id)
+    answer = questions.answers.all()
+    return render(request, "singleQuestion.html", {"questions": questions, "answers": answer})

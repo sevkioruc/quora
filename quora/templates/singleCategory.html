@@ -19,6 +19,7 @@
             <td>{{question.category}}</a></td>
             <td>{{question.author.username}}</td>
             <td>{{question.created_date}}</td>
+            <td><a href="/question/answer/{{question.id}}"><i class="fas fa-comment" style="margin-left:48px;"></i></a></td>
         </tr>
         {% endfor %}
     </tbody>

@@ -13,11 +13,11 @@ class Question(models.Model):
 
 
 class Answer(models.Model):
-    answer = models.ForeignKey(
+    question = models.ForeignKey(
         Question, on_delete=models.CASCADE, related_name="answers")
     answer_author = models.CharField(max_length=50)
     answer_content = models.CharField(max_length=200)
     answer_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.comment_content
+        return self.answer_content
