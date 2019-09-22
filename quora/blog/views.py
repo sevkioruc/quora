@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
+from django.shortcuts import render, redirect, HttpResponse, get_object_or_404, reverse
 from blog.models import Question, Answer
 from blog.forms import QuestionForm
 from django.contrib import messages
@@ -37,7 +37,20 @@ def getSingleCategory(request, category):
     return render(request, "singleCategory.html", {"questions": questions})
 
 
-def getAnswer(request, id):
+def getQuestion(request, id):
     questions = get_object_or_404(Question, id=id)
     answer = questions.answers.all()
     return render(request, "singleQuestion.html", {"questions": questions, "answers": answer})
+
+
+def addAnswer(request, id):
+    question = get_object_or_404(Question, id=id)
+    if request.method == "POST":
+        answer_author = request.user
+        answer_content = request.POST.get("answer_content")
+
+        newAnswer = Answer(answer_author=answer_author,
+                           answer_content=answer_content)
+        newAnswer.question = question
+        newAnswer.save()
+    return redirect(reverse("question:detail", kwargs={"id": id}))

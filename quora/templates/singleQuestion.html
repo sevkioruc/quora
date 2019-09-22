@@ -1,15 +1,43 @@
 {% extends 'base.html' %}
 {% block body %}
-
-{{questions.content}}
-
-{% if answers %}
-    {% for answer in answers %}
-    <div class="media mb-4">
-            {{answer.answer_content}}
+<div class="row">
+    <div class="col-lg-8">
+        <p class="lead"><small><b>{{questions.author.username}}</b> {{questions.created_date}} </small></p>
+        <p></p>
+        <hr>
+        <p class="lead">{{questions.content|safe}}</p>
+        <hr>
+    {% if answers %}
+        {% for answer in answers %}
+            <div class="media mb-4">
+                <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50">
+                <div class="media-body">
+                    <h5 class="mt-0">{{answer.answer_author}}</h5>
+                    {{answer.answer_content}}<br>
+                    <small>{{answer.answer_date}}</small>
+                    <br>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="alert alert-danger">
+            Herhangi bir yorum yapılmadı..İlk yorum yapan sen ol !
+        </div>
+    {% endif %}
+    <div class="card my-4">
+        <h5 class="card-header">Reply:</h5>
+            <div class="card-body">
+                <form method="post" action="{% url 'question:answer' questions.id %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="formGroupExampleInput"></label>
+                        <textarea name="answer_content" class="form-control" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-danger">Add</button>
+                </form>
+            </div>
+        </div>
     </div>
-    {% endfor %}
-{% endif %}
-
+</div>
 {% endblock %}
-<!--question/answer/2-->
+
