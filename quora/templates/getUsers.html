@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block body %}
+
+{% if users %}
+    <table class="table">
+        {% for user in users %}
+        <tr>
+            <th scope="row">{{user}}</th>
+            <td><a href="{% url 'user:follow' user.id %}" class="btn btn-danger">Follow</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+
+{% endblock %}

@@ -1,8 +1,9 @@
-from django.shortcuts import render, HttpResponse, redirect
+from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from .forms import RegisterForm, LoginForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
+from .models import Follow
 
 
 def register(request):
@@ -52,3 +53,16 @@ def loginUser(request):
 def logoutUser(request):
     logout(request)
     return redirect('home')
+
+
+def getUsers(request):
+    users = User.objects.all()
+    return render(request, "getUsers.html", {"users": users})
+
+
+def follow(request, id):
+    current_user = request.user
+    user = User.objects.get(pk=id)
+    print(current_user)
+    current_user.following.add(Follow(following=user), bulk=False)
+    return redirect('user:getUsers')
