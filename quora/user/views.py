@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from .models import Follow
+from django.db.models import Q
 
 
 def register(request):
@@ -56,7 +57,11 @@ def logoutUser(request):
 
 
 def getUsers(request):
-    users = User.objects.all()
+    deneme = [request.user.id]
+    follower = request.user.following.all()  # Takipciler
+    for f in follower:
+        deneme.append(f.following_id)
+    users = User.objects.filter(~Q(id__in=deneme))
     return render(request, "getUsers.html", {"users": users})
 
 
