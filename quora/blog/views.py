@@ -27,7 +27,7 @@ def addQuestion(request):
         question.author = request.user
         question.save()
         messages.success(request, "Question asked")
-        return redirect('question:dashboard')
+        return redirect('categories')
     return render(request, "addQuestion.html", {"form": form})
 
 
