@@ -19,7 +19,7 @@ def register(request):
             newUser.save()
             login(request, newUser)
             messages.success(request, 'Basari ile kayit oldunuz')
-            return render(request, "homepage.html")
+            return redirect('categories')
         context = {
             "form": form
         }
@@ -47,7 +47,7 @@ def loginUser(request):
             return render(request, "login.html", context)
         messages.success(request, 'Basari ile giris yaptiniz.')
         login(request, user)
-        return redirect('question:dashboard')
+        return redirect('categories')
     return render(request, 'login.html', context)
 
 

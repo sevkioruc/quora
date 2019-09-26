@@ -37,12 +37,14 @@ def getSingleCategory(request, category):
     return render(request, "singleCategory.html", {"questions": questions})
 
 
+@login_required(login_url='/user/login/')
 def getQuestion(request, id):
     questions = get_object_or_404(Question, id=id)
     answer = questions.answers.all()
     return render(request, "singleQuestion.html", {"questions": questions, "answers": answer})
 
 
+@login_required(login_url='/user/login/')
 def addAnswer(request, id):
     question = get_object_or_404(Question, id=id)
     if request.method == "POST":
