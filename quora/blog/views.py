@@ -33,7 +33,12 @@ def addQuestion(request):
 
 @login_required(login_url='/user/login/')
 def getSingleCategory(request, category):
-    questions = Question.objects.filter(category=category)
+    authorized_user = [request.user.id]
+    follower = request.user.following.all()
+    for f in follower:
+        authorized_user.append(f.following.id)
+    questions = Question.objects.filter(
+        category=category, author__in=authorized_user)
     return render(request, "singleCategory.html", {"questions": questions})
 
 

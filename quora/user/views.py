@@ -57,11 +57,11 @@ def logoutUser(request):
 
 
 def getUsers(request):
-    deneme = [request.user.id]
-    follower = request.user.following.all()  # Takipciler
+    authorized_user = [request.user.id]
+    follower = request.user.following.all()
     for f in follower:
-        deneme.append(f.following_id)
-    users = User.objects.filter(~Q(id__in=deneme))
+        authorized_user.append(f.following_id)
+    users = User.objects.filter(~Q(id__in=authorized_user))
     return render(request, "getUsers.html", {"users": users})
 
 
