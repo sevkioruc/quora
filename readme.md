@@ -5,19 +5,25 @@
 
 
 Anasayfa , kullanıcı kaydı ve girişi içeren bir navbar
+
 ![alt text](Images/homepage.png)
 
+Giriş yapma ekranı
 
-Kayıt olma ve giriş yapma ekranları
 ![alt text](Images/login.png)
+
+Kayıt olma  ekranı
+
 ![alt text](Images/register.png)
 
 
 Soru sormak istediğimiz kategoriyi seçeceğimiz yer
+
 ![alt text](Images/categories.png)
 
 
 Soru sorma ekranı
+
 ![alt text](Images/add_question.png)
 
 
